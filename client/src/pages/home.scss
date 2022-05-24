@@ -1,0 +1,32 @@
+.home {
+  &__wrapper {
+  }
+
+  &__container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    padding: 20px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #3a3a3a;
+  }
+
+  &__body {
+  }
+
+  &__table_head {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+  }
+  &__table_column {
+    border: 1px solid #3a3a3a;
+    padding: 10px;
+  }
+
+  &__list {
+  }
+}

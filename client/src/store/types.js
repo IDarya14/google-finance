@@ -1,0 +1,1 @@
+export const SET_ALL_TRICKERS = 'SET_ALL_TRICKERS';

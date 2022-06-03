@@ -9,10 +9,9 @@ let socket = null;
 
 function App() {
   const [isConnect, setIsConnect] = useState(true);
-
   const dispatch = useDispatch();
-  const tickers = useSelector((state) => state.trickersReducer.trickers);
-  const prevTickers = useRef(tickers);
+  const tickers = useSelector((state) => state.tickersReducer?.trickers);
+  const prevTickers = useRef();
 
   const handleConnect = () => {
     socket = io('http://localhost:4000/');

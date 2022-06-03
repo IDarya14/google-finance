@@ -1,10 +1,10 @@
 import { SET_ALL_TRICKERS } from '../types';
 
-const initialState = {
+export const initialState = {
   trickers: [],
 };
 
-const tickersReducer = (state = initialState, action) => {
+export const tickersReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ALL_TRICKERS:
       return {
@@ -15,5 +15,3 @@ const tickersReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default tickersReducer;

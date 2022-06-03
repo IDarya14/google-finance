@@ -1,16 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Switch from '@mui/material/Switch';
 import './table.scss';
 
-export const Table = ({
-  setIsTickersOpen,
-  setIsConnect,
-  isConnect,
-  isTickersOpen,
-  prevTickers,
-}) => {
-  const tickers = useSelector((state) => state.trickersReducer.trickers);
+const Table = ({ setIsTickersOpen, isTickersOpen, prevTickers }) => {
+  const tickers = useSelector((state) => state.tickersReducer?.trickers);
 
   const isOpenItem = (id) => {
     const obj = { ...isTickersOpen };
@@ -57,6 +50,7 @@ export const Table = ({
       }, {});
     return setIsTickersOpen(newArray);
   };
+
   return (
     <>
       <div className="table">
@@ -78,39 +72,38 @@ export const Table = ({
             </div>
           </div>
         </div>
-        <ul className="table__body">
-          {tickers?.map((elem) => (
-            <li
-              key={elem.ticker}
-              className={`table__item ${getClassForItem(elem.ticker)}`}
-            >
-              <div className="table__elem">{elem.ticker}</div>
-              <div className="table__elem">{elem.exchange}</div>
-              <div className={`table__elem ${getClassforPrice(elem.ticker)}`}>
-                {elem.price}$
-              </div>
-              <div className="table__elem">{elem.yield}%</div>
-              <div className="table__elem">{elem.change}</div>
-              <div className="table__elem">{elem.dividend}%</div>
-              <div className="table__elem">{elem.change_percent}%</div>
-              <div className="table__elem">{elem.last_trade_time}</div>
-              <div className="table__elem">
-                <div
-                  className="table__delete-btn"
-                  onClick={() => isOpenItem(elem.ticker)}
-                >
-                  &times;
+        {tickers.length > 0 && (
+          <ul className="table__body" data-testid="list">
+            {tickers?.map((elem) => (
+              <li
+                key={elem.ticker}
+                className={`table__item ${getClassForItem(elem.ticker)}`}
+              >
+                <div className="table__elem">{elem.ticker}</div>
+                <div className="table__elem">{elem.exchange}</div>
+                <div className={`table__elem ${getClassforPrice(elem.ticker)}`}>
+                  {elem.price}$
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="table__elem">{elem.yield}%</div>
+                <div className="table__elem">{elem.change}</div>
+                <div className="table__elem">{elem.dividend}%</div>
+                <div className="table__elem">{elem.change_percent}%</div>
+                <div className="table__elem">{elem.last_trade_time}</div>
+                <div className="table__elem">
+                  <div
+                    className="table__delete-btn"
+                    onClick={() => isOpenItem(elem.ticker)}
+                  >
+                    &times;
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <Switch
-        defaultChecked
-        value={isConnect}
-        onChange={() => setIsConnect((prev) => !prev)}
-      />
     </>
   );
 };
+
+export default React.memo(Table);

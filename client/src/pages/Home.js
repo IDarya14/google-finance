@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Table } from '../components/Table';
+import Table from '../components/Table';
+import Switch from '@mui/material/Switch';
 import './home.scss';
 
 export const Home = ({ setIsConnect, isConnect, prevTickers }) => {
@@ -17,11 +18,14 @@ export const Home = ({ setIsConnect, isConnect, prevTickers }) => {
         <Table
           setIsTickersOpen={setIsTickersOpen}
           isTickersOpen={isTickersOpen}
-          isConnect={isConnect}
-          setIsConnect={setIsConnect}
           prevTickers={prevTickers}
         />
       </div>
+      <Switch
+        defaultChecked
+        value={isConnect}
+        onChange={() => setIsConnect((prev) => !prev)}
+      />
     </div>
   );
 };

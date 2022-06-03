@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import trickersReducer from '../reducers/trickersReducer';
+import { tickersReducer } from '../reducers/trickersReducer';
 
 export const rootReducer = combineReducers({
-  trickersReducer,
+  tickersReducer,
 });
